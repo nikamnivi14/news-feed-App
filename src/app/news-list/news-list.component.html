@@ -1,0 +1,31 @@
+
+ 
+<div>
+ 
+<div class="col-md-12">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      [responsive]="true"
+      (pageChange)="handlePageChange($event)"
+    ></pagination-controls>
+  </div>
+<div id="container">
+<article class="row flex" *ngFor="let n of newsList| paginate : {
+    itemsPerPage: pageSize,
+    currentPage: page,
+    totalItems: totalPages
+  };">
+   
+  <div class="content" translate="yes">
+   <p class="title truncate-text">{{n?.title}}</p>
+   
+  <a  href="{{ n.url }}" target="_blank"> Read More</a> 
+  </div>
+</article>
+</div>
+
+ 
+<p *ngIf="totalRecords== 0 && query" id="no-content">No articles available related to {{query}}</p>
+
+ 

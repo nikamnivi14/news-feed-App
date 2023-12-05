@@ -1,0 +1,18 @@
+<header>
+  <h1>
+    Top News Search
+  </h1>
+  <form #searchForm="ngForm" (ngSubmit)="routeTo()" id="form">
+    <input type="text" (input)="debounceSearch(search.value)" [(ngModel)]="newsQuery" placeholder="Search here..."
+      ngModel #search name="search">
+    <button type="submit" [disabled]="!newsQuery"><i class="fa fa-search"></i>Search</button>
+    <button type="submit" (click)="removeQueryParams()"><i class="fa fa-search"></i>Reset</button>
+
+
+    <button type="submit" (click)="newestStories()"><i class="fa fa-search"></i>Newest Stories</button>
+    <button type="submit" (click)="topStories()"><i class="fa fa-search"></i>Top Stories</button>
+
+  </form>
+</header>
+<app-loader></app-loader>
+<router-outlet></router-outlet>
